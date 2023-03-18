@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.messsage-container {
+  height: 20%;
+  width: 25%;
+}
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-align: ce;
+}
