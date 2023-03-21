@@ -1,8 +1,6 @@
 .container {
   display: flex;
   justify-content: center;
-  height: 100%;
-  width: 100%;
 }
 
 .form-container {
@@ -17,4 +15,16 @@
   width: 100%;
   margin-left: 2px;
   margin-right: 2px;
+}
+
+p {
+  font-weight: bold;
+  color: red;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.field {
+  height: fit-content !important;
+  margin-bottom: 4px !important;
 }

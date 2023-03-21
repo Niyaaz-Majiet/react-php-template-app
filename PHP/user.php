@@ -2,9 +2,10 @@
 //imports db instance.
 require_once("./sql.php");
 $db = sql();
+
 header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Methods: HEAD, GET, POST, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+header('Access-Control-Allow-Methods: GET, POST, DELETE');
+header("Access-Control-Allow-Headers: X-Requested-With");
 header('Content-Type: application/json');
 header("HTTP/1.1 200 OK");
 $rest_json = file_get_contents("php://input");

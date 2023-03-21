@@ -1,30 +1,41 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Form, Button } from "semantic-ui-react";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./Home.css";
 
-const Home = () => {
+export default function Home() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: "",
+  const { state } = useLocation();
+  const data = {
+    firstName: "",
     surname: "",
-    age: "",
+    age: null,
     nationality: "",
-  });
-
-  const handleFormInputChange = (e, name) => {
-    e.preventDefault();
-    setFormData({ ...formData, [name]: e.target.value });
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  if (state) {
+    data.ID = state.ID;
+    data.firstName = state.name;
+    data.surname = state.surname;
+    data.age = state.age;
+    data.nationality = state.nationality;
+  }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
     axios({
       method: "post",
       url: `http://localhost:8000`,
       headers: { "content-type": "application/json" },
-      data: formData,
+      data: data,
     })
       .then((res) => {
         navigate("/registry");
@@ -36,63 +47,65 @@ const Home = () => {
 
   return (
     <div className="container">
-      <form className="form-container">
-        <div className="input-container">
-          <label>Full Name</label>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form.Field className="form-container">
+          <label>Name</label>
           <input
+            className="input-container"
             type="text"
-            placeholder="Your name ..."
-            value={formData.name}
-            onChange={(e) => {
-              handleFormInputChange(e, "name");
-            }}
+            placeholder="Your Name ..."
+            {...register("name", {
+              required: true,
+              maxLength: 25,
+              value: data.firstName,
+            })}
           />
-        </div>
-
-        <div className="input-container">
+        </Form.Field>
+        {errors.name && <p>Please check the First Name</p>}
+        <Form.Field className="form-container">
           <label>Surname</label>
           <input
+            className="input-container"
             type="text"
             placeholder="Your surname ..."
-            value={formData.surname}
-            onChange={(e) => {
-              handleFormInputChange(e, "surname");
-            }}
+            {...register("surname", {
+              required: true,
+              maxLength: 25,
+              value: data.surname,
+            })}
           />
-        </div>
-
-        <div className="input-container">
-          <label>age</label>
+        </Form.Field>
+        {errors.surname && <p>Please check the Surname</p>}
+        <Form.Field className="form-container">
+          <label>Age</label>
           <input
+            className="input-container"
             type="number"
             placeholder="Your age ..."
-            value={formData.age}
-            onChange={(e) => {
-              handleFormInputChange(e, "age");
-            }}
+            {...register("age", {
+              required: true,
+              valueAsNumber: true,
+              value: data.age,
+            })}
           />
-        </div>
-
-        <div className="input-container">
+        </Form.Field>
+        {errors.age && <p>Please check your Age</p>}
+        <Form.Field className="form-container">
           <label>Nationality</label>
           <input
+            className="input-container"
             type="text"
             placeholder="Your nationality ..."
-            value={formData.nationality}
-            onChange={(e) => {
-              handleFormInputChange(e, "nationality");
-            }}
+            {...register("nationality", {
+              required: true,
+              maxLength: 50,
+              value: data.nationality,
+            })}
           />
-        </div>
-
-        <input
-          type="submit"
-          onClick={(e) => handleFormSubmit(e)}
-          value="Submit"
-        />
-      </form>
+        </Form.Field>
+        {errors.nationality && <p>Please check your Nationality</p>}
+        <Button type="submit">Submit</Button>
+      </Form>
     </div>
   );
-};
-
-export default Home;
+}

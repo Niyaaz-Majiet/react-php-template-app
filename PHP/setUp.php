@@ -13,12 +13,12 @@ TODO :
 //TODO : update as "./sql.php" returns db instance now instead of taking in the sql query
 //Adds dummy data to db 
 // $data = array(
-//     0=> array("ID"=> 0, "name"=>'"Goku"',"surname"=>'"Test1"',"age"=>20,"nationality"=>'"SA"'),
-//     1=> array("ID"=> 1, "name"=>'"Nazmie"',"surname"=>'"Diedricks"',"age"=>37,"nationality"=>'"USA"'),
-//     2=> array("ID"=> 2, "name"=>'"Vageta"',"surname"=>'"Samm"',"age"=>29,"nationality"=>'"India"'),
-//     3=> array("ID"=> 3, "name"=>'"Gohaan"',"surname"=>'"Awe"',"age"=>12,"nationality"=>'"house"'),
-//     4=> array("ID"=> 4, "name"=>'"Beerus"',"surname"=>'"MASEKIND"',"age"=>68,"nationality"=>'"Space"'),
-//     5=> array("ID"=> 5, "name"=>'"Gohaan"',"surname"=>'"Awe"',"age"=>14,"nationality"=>'"house"')
+//     0=> array( "name"=>'"Goku"',"surname"=>'"Test1"',"age"=>20,"nationality"=>'"SA"'),
+//     1=> array( "name"=>'"Nazmie"',"surname"=>'"Diedricks"',"age"=>37,"nationality"=>'"USA"'),
+//     2=> array( "name"=>'"Vageta"',"surname"=>'"Samm"',"age"=>29,"nationality"=>'"India"'),
+//     3=> array( "name"=>'"Gohaan"',"surname"=>'"Awe"',"age"=>12,"nationality"=>'"house"'),
+//     4=> array( "name"=>'"Beerus"',"surname"=>'"MASEKIND"',"age"=>68,"nationality"=>'"Space"'),
+//     5=> array( "name"=>'"Gohaan"',"surname"=>'"Awe"',"age"=>14,"nationality"=>'"house"')
 // );
 
 

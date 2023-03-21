@@ -1,9 +1,23 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./RegistryItem.css";
 
 const RegistryItem = ({ ID, name, surname, age, nationality }) => {
+  const navigate = useNavigate();
+  const handleItemClick = () => {
+    navigate("/", {
+      state: {
+        ID,
+        name,
+        surname,
+        age,
+        nationality,
+      },
+    });
+  };
+
   return (
-    <div className="container-item">
+    <div className="container-item" onClick={() => handleItemClick()}>
       <label title={name}>
         <input value={name} disabled />
       </label>
